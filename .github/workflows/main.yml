@@ -1,11 +1,14 @@
 name: My first workflow
 
-on: [push, pull_request]
+on: 
+    pull_request:
+        types: [labeled]
 
 jobs:
     build:
         runs-on: ubuntu-latest
-        
+        if: github.event.label.name == 'ready_to_build'
+
         steps:
             - name: Checkout repository
               uses: actions/checkout@v2
@@ -20,6 +23,6 @@ jobs:
             - name: build
               run:
                 make build
-            - name: run
+            - name: run test
               run:
                 make run
