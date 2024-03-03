@@ -19,4 +19,7 @@ jobs:
               run: sudo apt-get install libgtest-dev
             - name: build
               run:
-                make
+                make build
+            - name: run
+              run:
+                make run

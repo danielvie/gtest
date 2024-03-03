@@ -1,14 +1,16 @@
-all: default
+default: build
 
-i: init
-
-m: create_main
+b: build
 
 c: clean
 
-default:
+r: run
+
+build:
 	cmake -B ./build
 	cmake --build ./build
+
+run:
 	./build/unittest
 
 clean:
