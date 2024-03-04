@@ -26,3 +26,22 @@ jobs:
             - name: run test
               run:
                 make run
+            - name: update label
+              uses: actions/github-script@v3
+              with:
+                github-token: ${{ secrets.GITHUB_TOKEN }}
+                script: |
+                    const { owner, repo, number: issue_number } = context.issue;
+                    await github.issues.removeLabel({
+                        owner,
+                        repo,
+                        issue_number,
+                        name: 'ready_to_build'
+                    });
+                    await github.issues.addLabels({
+                        owner,
+                        repo,
+                        issue_number,
+                        labels: ['success']
+                    });
+            
