@@ -19,6 +19,7 @@ TEST(AddTest, Zero) {
 
 int main(int argc, char **argv)
 {
+    // bla
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
